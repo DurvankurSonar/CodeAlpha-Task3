@@ -1,0 +1,168 @@
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      text-align: center;
+      background-color: rgb(49, 9, 57);
+      color: white;
+      padding: 5px;
+      font-size: 50px;
+      text-transform: uppercase;
+    }
+    
+    h2 {
+      font-size: 40px;
+      font-weight: 500;
+    }
+
+    label {
+      font-size: 30px;
+      display: block;
+      margin: 10px 0px;
+    }
+
+    .form-group {
+      margin: 15px 15px;
+	
+    }
+
+    input {
+      border: 1px solid black;
+      font-size: 20px;
+      padding: 10px 5px;
+      width: 20%;
+      border-radius: 5px;
+    }
+    #btn {
+      cursor: pointer;
+      color: white;
+      background: rgb(13, 110, 253);
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      font-family: sans-serif;
+      letter-spacing: 2px;
+      margin-top: 10px;
+    }
+    #btn:hover {
+      background-color: rgb(22, 22, 22);
+    }
+    hr {
+      width: 80%;
+      margin: 20px auto;
+      opacity: 0.5;
+    }
+    #contact 
+    {
+	
+        background-color: #ffabaf ;
+      width: 30%;
+      height: 40%;
+      margin:  auto;
+      border: 2px solid rgb(77, 70, 159);
+      border-radius: 5px;
+      padding: 10px 80px 30px 10px;
+      box-sizing: content-box;
+      position: relative;
+      font-size: 20PX;
+    }
+
+  
+    #delete {
+      position: absolute;
+     top: 20px;
+      right: 20px;
+      white-space: pre-line; 
+      white-space: pre-line; 
+      padding: 5px;
+      background-color: whitesmoke;
+      border: 1px solid #430909;
+      color: #dc4545;
+      border-radius: 5px; 
+    }
+    #delete:hover {
+      background-color: #dc4545;
+      color: white;
+      cursor: pointer;
+    }
+  
+    </style>
+   
+    <title>Event Manager</title>
+   
+  </head>
+  <body id="main">
+    <!-- Navbar -->
+    <nav>
+      <h1>Event Manager</h1>
+    </nav>
+
+    <div id="add">
+      
+  
+      <form id="form" style="background-color:LightYellow; padding:15px; margin:15px;  ">
+      
+        <center><div class="form-group">
+          <b> Event Title:</b>
+          <input type="text" id="name" name="name" placeholder="Write Something ..." required />
+		  
+<br>			
+<b>Event Date:</b>
+ 
+ <input type="date" id="number" name="number" required />
+ <br>
+        <button id="btn" type="submit"><h4>Create Event</h4></button>
+        </div></center>
+        
+      
+      </form>
+    </div>
+    <hr />
+   
+ 
+    <div id="list"></div>
+    <script >
+        const btn = document.getElementById("btn");
+        const name = document.getElementById("name");
+        var number = document.getElementById("number");
+   
+        const contactList = document.getElementById("list");
+
+        btn.addEventListener("click", function (e)
+        {
+            e.preventDefault()
+            isValid = true;
+            if (isValid)
+            {
+                    createlist()
+                    name.value = "";
+					number.value="";
+                   
+            }
+
+        })
+        function createlist()
+        {
+            const plate = document.createElement("div");
+            plate.setAttribute("id", "contact");
+            plate.innerHTML = ` <p id="nameDisplay">  <b> Event Title: </b> ${name.value}</p>
+            <p id="numberdisplay"> <b> Event Date: </b>${number.value}</p>
+            <button id="delete" onclick="remove(this)">Delete</button></p>`
+            contactList.appendChild(plate);
+        }
+        function remove(contact)
+        {
+            var element = contact;
+            element.parentElement.remove()
+        }
+        
+        </script>
+  </body>
+</html>
